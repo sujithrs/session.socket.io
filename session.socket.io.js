@@ -18,7 +18,7 @@ module.exports = function(io, sessionStore, cookieParser, key) {
       cookieParser(socket.handshake, {}, function (parseErr) {
         sessionStore.load(findCookie(socket.handshake), function (storeErr, session) {
           var err = resolve(parseErr, storeErr, session);
-          callback(err, socket, session);
+          callback(socket, session, err);
         });
       });
     });
